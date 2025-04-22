@@ -1,0 +1,91 @@
+{
+    "systemArchitecture": {
+        "apiIntegration": {
+            "gptAPI": {
+                "model": "gpt-4",
+                "configurations": {
+                    "patientAgent": {
+                        "temperature": 0.3,
+                        "maxTokens": 500,
+                        "systemPrompt": "You are a patient service agent helping to understand user symptoms"
+                    },
+                    "doctorAgent": {
+                        "temperature": 0.2,
+                        "maxTokens": 1000,
+                        "systemPrompt": "You are a medical professional providing diagnosis and advice"
+                    },
+                    "knowledgeAgent": {
+                        "temperature": 0.1,
+                        "maxTokens": 2000,
+                        "systemPrompt": "You are a medical knowledge base manager"
+                    }
+                },
+                "optimizations": [
+                    "Response caching",
+                    "Rate limiting",
+                    "Retry mechanism",
+                    "Stream responses"
+                ]
+            }
+        },
+        "communicationPattern": {
+            "messageQueue": {
+                "type": "Redis pub/sub",
+                "patterns": [
+                    "user-to-patient",
+                    "patient-to-coordinator",
+                    "coordinator-to-doctor",
+                    "doctor-to-knowledge"
+                ]
+            },
+            "stateManagement": {
+                "type": "Redux",
+                "stores": [
+                    "userProfile",
+                    "conversationState",
+                    "agentStates"
+                ]
+            },
+            "realtime": {
+                "technology": "WebSocket",
+                "implementation": "Socket.io"
+            }
+        },
+        "systemComponents": {
+            "frontend": {
+                "framework": "React",
+                "styling": "Tailwind CSS",
+                "mainComponents": [
+                    "ChatInterface",
+                    "UserProfile",
+                    "HistoryViewer",
+                    "EmergencyAlert"
+                ]
+            },
+            "backend": {
+                "framework": "Node.js + Express",
+                "services": [
+                    "AuthService",
+                    "AgentService",
+                    "MessageService",
+                    "AnalyticsService"
+                ]
+            },
+            "database": {
+                "main": "MongoDB",
+                "cache": "Redis",
+                "backup": "AWS S3"
+            },
+            "security": {
+                "authentication": "JWT",
+                "encryption": "AES-256",
+                "dataProtection": "HIPAA compliant"
+            }
+        },
+        "scalability": {
+            "loadBalancing": "AWS ELB",
+            "containerization": "Docker",
+            "orchestration": "Kubernetes"
+        }
+    }
+}

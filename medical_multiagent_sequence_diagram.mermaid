@@ -1,0 +1,34 @@
+sequenceDiagram
+    participant U as User
+    participant PA as PatientAgent
+    participant CA as CoordinatorAgent
+    participant DA as DoctorAgent
+    participant KA as KnowledgeAgent
+
+    U->>PA: Input symptoms
+    PA->>PA: Process user input
+    PA->>CA: Forward processed input
+    CA->>DA: Route to doctor agent
+    DA->>KA: Request medical knowledge
+    KA->>KA: Query knowledge base
+    KA-->>DA: Return relevant information
+    DA->>DA: Analyze symptoms
+    DA->>CA: Send diagnosis
+    CA->>PA: Route diagnosis
+    PA->>PA: Format response
+    PA-->>U: Show diagnosis
+
+    alt Emergency Situation
+        DA->>CA: Flag as emergency
+        CA->>PA: Urgent notification
+        PA-->>U: Emergency alert
+    end
+
+    alt Follow-up Required
+        U->>PA: Additional question
+        PA->>CA: Route follow-up
+        CA->>DA: Request clarification
+        DA-->>CA: Additional advice
+        CA-->>PA: Route response
+        PA-->>U: Show advice
+    end

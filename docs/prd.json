@@ -1,0 +1,159 @@
+{
+    "projectInfo": {
+        "name": "lightweight_medical_multiagent",
+        "programmingLanguage": "JavaScript + React + Tailwind CSS",
+        "originalRequirement": "搭建一个非常轻量的医疗multi-agent，主要用gpt的API"
+    },
+    "productGoals": [
+        "构建一个基于GPT API的轻量级医疗咨询系统，实现多个智能代理之间的自然交互",
+        "提供高效、准确的初步医疗咨询服务，降低医疗资源使用门槛",
+        "确保系统响应迅速、交互流畅，同时保护用户隐私和数据安全"
+    ],
+    "userStories": [
+        {
+            "role": "普通用户",
+            "want": "描述症状并获得初步诊断建议",
+            "benefit": "决定是否需要就医"
+        },
+        {
+            "role": "慢性病患者",
+            "want": "获得日常用药和生活建议",
+            "benefit": "更好地管理自己的健康状况"
+        },
+        {
+            "role": "偏远地区居民",
+            "want": "通过系统获得基础医疗咨询",
+            "benefit": "节省往返医院的时间和成本"
+        }
+    ],
+    "agents": {
+        "patientAgent": {
+            "role": "用户代理",
+            "responsibilities": [
+                "接收和理解用户输入",
+                "管理用户画像和历史记录",
+                "确保用户隐私保护"
+            ]
+        },
+        "doctorAgent": {
+            "role": "医生代理",
+            "responsibilities": [
+                "分析症状并提供初步诊断",
+                "给出用药和就医建议",
+                "回答医疗相关问题"
+            ]
+        },
+        "knowledgeAgent": {
+            "role": "知识代理",
+            "responsibilities": [
+                "管理医疗知识库",
+                "提供疾病预防信息",
+                "更新医学常识"
+            ]
+        },
+        "coordinatorAgent": {
+            "role": "协调代理",
+            "responsibilities": [
+                "管理代理间的通信",
+                "确保对话流程顺畅",
+                "监控系统运行状态"
+            ]
+        }
+    },
+    "requirements": {
+        "P0": {
+            "basicDiagnosis": {
+                "features": [
+                    "症状描述和分析",
+                    "初步诊断建议",
+                    "就医建议生成"
+                ]
+            },
+            "agentCommunication": {
+                "features": [
+                    "消息路由系统",
+                    "状态同步机制",
+                    "错误处理机制"
+                ]
+            },
+            "userInterface": {
+                "features": [
+                    "聊天界面",
+                    "用户信息管理",
+                    "历史记录查看"
+                ]
+            }
+        },
+        "P1": {
+            "knowledgeManagement": {
+                "features": [
+                    "医疗知识更新",
+                    "症状库维护",
+                    "用药指南管理"
+                ]
+            },
+            "userProfile": {
+                "features": [
+                    "健康状况记录",
+                    "就医历史追踪",
+                    "个性化建议生成"
+                ]
+            }
+        },
+        "P2": {
+            "analytics": {
+                "features": [
+                    "使用情况分析",
+                    "诊断准确率统计",
+                    "用户满意度追踪"
+                ]
+            },
+            "multiLanguage": {
+                "features": [
+                    "中英文切换",
+                    "方言理解"
+                ]
+            }
+        }
+    },
+    "nonFunctionalRequirements": {
+        "performance": {
+            "systemResponseTime": "< 2秒",
+            "concurrentUsers": ">= 1000",
+            "apiLatency": "< 1秒"
+        },
+        "security": {
+            "requirements": [
+                "数据加密传输",
+                "用户信息脱敏",
+                "访问权限控制"
+            ]
+        },
+        "availability": {
+            "systemUptime": "99.9%",
+            "recoveryTime": "< 30分钟",
+            "backup": "每日"
+        }
+    },
+    "openQuestions": [
+        "GPT API的调用频率和成本如何优化？",
+        "如何确保医疗建议的准确性和合规性？",
+        "是否需要引入专业医生进行人工审核？",
+        "如何处理紧急医疗情况？",
+        "系统扩展性如何保证？"
+    ],
+    "implementation": {
+        "timeline": {
+            "prototypeDevelopment": "2周",
+            "basicFeatures": "4周",
+            "testingAndOptimization": "2周",
+            "deployment": "1周"
+        },
+        "successMetrics": {
+            "userSatisfaction": "> 90%",
+            "diagnosisAccuracy": "> 85%",
+            "responseTime": "< 2秒",
+            "dailyActiveUserGrowth": "> 10%"
+        }
+    }
+}
