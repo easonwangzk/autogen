@@ -1,0 +1,73 @@
+classDiagram
+    class User {
+        +String userId
+        +String name
+        +String healthProfile
+        +List[Conversation] history
+        +login()
+        +updateProfile()
+        +viewHistory()
+    }
+
+    class BaseAgent {
+        +String agentId
+        +String role
+        +processMessage(message: Message)
+        +generateResponse()
+        +handleError()
+    }
+
+    class PatientAgent {
+        -User userProfile
+        +updateUserProfile()
+        +processSymptoms()
+        +managePrivacy()
+    }
+
+    class DoctorAgent {
+        -KnowledgeBase medicalKnowledge
+        +analyzeSymptons()
+        +provideDiagnosis()
+        +generateAdvice()
+    }
+
+    class KnowledgeAgent {
+        -Database medicalDB
+        +updateKnowledge()
+        +queryDatabase()
+        +validateInformation()
+    }
+
+    class CoordinatorAgent {
+        -Queue messageQueue
+        +routeMessage()
+        +monitorSystem()
+        +handleFailover()
+    }
+
+    class Message {
+        +String messageId
+        +String content
+        +String fromAgent
+        +String toAgent
+        +Timestamp time
+        +forward()
+        +process()
+    }
+
+    class Conversation {
+        +String conversationId
+        +List[Message] messages
+        +String status
+        +addMessage()
+        +endConversation()
+    }
+
+    BaseAgent <|-- PatientAgent
+    BaseAgent <|-- DoctorAgent
+    BaseAgent <|-- KnowledgeAgent
+    BaseAgent <|-- CoordinatorAgent
+    User "1" -- "*" Conversation
+    Conversation "1" -- "*" Message
+    PatientAgent -- User
+    CoordinatorAgent -- Message
